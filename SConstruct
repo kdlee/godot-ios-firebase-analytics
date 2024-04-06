@@ -73,11 +73,11 @@ except (subprocess.CalledProcessError, OSError):
     raise ValueError("Failed to find SDK path while running xcrun --sdk {} --show-sdk-path.".format(sdk_name))
 
 env.Append(CCFLAGS=[
-    '-fobjc-arc', 
-    '-fmessage-length=0', '-fno-strict-aliasing', '-fdiagnostics-print-source-range-info', 
-    '-fdiagnostics-show-category=id', '-fdiagnostics-parseable-fixits', '-fpascal-strings', 
-    '-fblocks', '-fvisibility=hidden', '-MMD', '-MT', 'dependencies', '-fno-exceptions', 
-    '-Wno-ambiguous-macro', 
+    '-fobjc-arc',
+    '-fmessage-length=0', '-fno-strict-aliasing', '-fdiagnostics-print-source-range-info',
+    '-fdiagnostics-show-category=id', '-fdiagnostics-parseable-fixits', '-fpascal-strings',
+    '-fblocks', '-fvisibility=hidden', '-MMD', '-MT', 'dependencies', '-fno-exceptions',
+    '-Wno-ambiguous-macro',
     '-Wall', '-Werror=return-type',
     # '-Wextra',
 ])
@@ -85,7 +85,7 @@ env.Append(CCFLAGS=[
 env.Append(CCFLAGS=['-arch', env['arch'], "-isysroot", "$IPHONESDK", "-stdlib=libc++", '-isysroot', sdk_path])
 env.Append(CCFLAGS=['-DPTRCALL_ENABLED'])
 env.Prepend(CXXFLAGS=[
-    '-DNEED_LONG_INT', '-DLIBYUV_DISABLE_NEON', 
+    '-DNEED_LONG_INT', '-DLIBYUV_DISABLE_NEON',
     '-DIPHONE_ENABLED', '-DUNIX_ENABLED', '-DCOREAUDIO_ENABLED'
 ])
 env.Append(LINKFLAGS=["-arch", env['arch'], '-isysroot', sdk_path, '-F' + sdk_path])
@@ -99,14 +99,14 @@ if env['version'] == '3.5':
 
     if env['target'] == 'debug':
         env.Prepend(CXXFLAGS=[
-            '-gdwarf-2', '-O0', 
-            '-DDEBUG_MEMORY_ALLOC', '-DDISABLE_FORCED_INLINE', 
+            '-gdwarf-2', '-O0',
+            '-DDEBUG_MEMORY_ALLOC', '-DDISABLE_FORCED_INLINE',
             '-D_DEBUG', '-DDEBUG=1', '-DDEBUG_ENABLED',
             '-DPTRCALL_ENABLED',
         ])
     elif env['target'] == 'release_debug':
         env.Prepend(CXXFLAGS=['-O2', '-ftree-vectorize',
-            '-DNDEBUG', '-DNS_BLOCK_ASSERTIONS=1', '-DDEBUG_ENABLED', 
+            '-DNDEBUG', '-DNS_BLOCK_ASSERTIONS=1', '-DDEBUG_ENABLED',
             '-DPTRCALL_ENABLED',
         ])
 
@@ -115,7 +115,7 @@ if env['version'] == '3.5':
     else:
         env.Prepend(CXXFLAGS=[
             '-O2', '-ftree-vectorize',
-            '-DNDEBUG', '-DNS_BLOCK_ASSERTIONS=1', 
+            '-DNDEBUG', '-DNS_BLOCK_ASSERTIONS=1',
             '-DPTRCALL_ENABLED',
         ])
 
@@ -127,9 +127,9 @@ elif env['version'] == '4.0':
 
     if env['target'] == 'debug':
         env.Prepend(CXXFLAGS=[
-            '-gdwarf-2', '-O0', 
-            '-DDEBUG_MEMORY_ALLOC', '-DDISABLE_FORCED_INLINE', 
-            '-D_DEBUG', '-DDEBUG=1', '-DDEBUG_ENABLED', 
+            '-gdwarf-2', '-O0',
+            '-DDEBUG_MEMORY_ALLOC', '-DDISABLE_FORCED_INLINE',
+            '-D_DEBUG', '-DDEBUG=1', '-DDEBUG_ENABLED',
         ])
     elif env['target'] == 'release_debug':
         env.Prepend(CXXFLAGS=[
@@ -146,19 +146,28 @@ elif env['version'] == '4.0':
         ])
 
         if env['arch'] != 'armv7':
-            env.Prepend(CXXFLAGS=['-fomit-frame-pointer'])            
+            env.Prepend(CXXFLAGS=['-fomit-frame-pointer'])
 else:
     print("No valid version to set flags for.")
     quit();
 
 # Adding header files
 env.Append(CPPPATH=[
-    '.', 
-    'godot', 
-    'godot/platform/iphone',
+    '.',
+    'godot',
     'Pods/FirebaseCore/FirebaseCore/Sources/Public',
     'Pods/Headers/Public',
 ])
+
+# Adding header files
+if env['version'] == '3.x':
+    env.Append(CPPPATH=[
+        'godot/platform/iphone',
+    ])
+else:
+       env.Append(CPPPATH=[
+        'godot/platform/ios',
+    ])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 sources = Glob('godot-ios-firebase-analytics/*.cpp')

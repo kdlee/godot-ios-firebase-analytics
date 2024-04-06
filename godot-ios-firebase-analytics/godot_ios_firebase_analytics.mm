@@ -9,7 +9,12 @@
 
 #import <Foundation/Foundation.h>
 #import "firebase_analytics.h"
+
+#if VERSION_MAJOR == 4
+#import "core/config/engine.h"
+#else
 #import "core/engine.h"
+#endif
 
 FirebaseAnalytics *firebase_analytics_plugin;
 

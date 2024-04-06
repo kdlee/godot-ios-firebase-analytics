@@ -5,12 +5,18 @@
 //  Created by YamazakiAkio on 2022/02/09.
 //
 
+#include "firebase_analytics.h"
+
 #import <Foundation/Foundation.h>
 
-#include "core/project_settings.h"
+#if VERSION_MAJOR == 4
+#include "core/object/class_db.h"
+#include "core/config/project_settings.h"
+#else
 #include "core/class_db.h"
+#include "core/project_settings.h"
+#endif
 
-#import "firebase_analytics.h"
 #import <FirebaseCore/FIRApp.h>
 
 void FirebaseAnalytics::_bind_methods() {
