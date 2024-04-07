@@ -7,15 +7,16 @@ target 'godot-ios-firebase-analytics' do
 
   # Pods for godot-ios-firebase-analytics
   # # Add the Firebase pod for Google Analytics
-  pod 'Firebase/Analytics'
+  pod 'FirebaseAnalytics'
 
   # For Analytics without IDFA collection capability, use this pod instead
   # pod ‘Firebase/AnalyticsWithoutAdIdSupport’
 
   # Add the pods for any other Firebase products you want to use in your app
   # For example, to use Firebase Authentication and Cloud Firestore
-  pod 'Firebase/Crashlytics'
-  #pod 'Firebase/Auth'
+  pod 'FirebaseCrashlytics'
+  #pod 'FirebaseAuth'
+  #pod 'FirebaseUI'
   #pod 'Firebase/Firestore'
 
 end

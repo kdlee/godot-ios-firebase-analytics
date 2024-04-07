@@ -1,14 +1,4 @@
 PODS:
-  - Firebase/Analytics (10.23.1):
-    - Firebase/Core
-  - Firebase/Core (10.23.1):
-    - Firebase/CoreOnly
-    - FirebaseAnalytics (~> 10.23.1)
-  - Firebase/CoreOnly (10.23.1):
-    - FirebaseCore (= 10.23.1)
-  - Firebase/Crashlytics (10.23.1):
-    - Firebase/CoreOnly
-    - FirebaseCrashlytics (~> 10.23.0)
   - FirebaseAnalytics (10.23.1):
     - FirebaseAnalytics/AdIdSupport (= 10.23.1)
     - FirebaseCore (~> 10.0)
@@ -120,12 +110,11 @@ PODS:
     - PromisesObjC (= 2.4.0)
 
 DEPENDENCIES:
-  - Firebase/Analytics
-  - Firebase/Crashlytics
+  - FirebaseAnalytics
+  - FirebaseCrashlytics
 
 SPEC REPOS:
   trunk:
-    - Firebase
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreExtension
@@ -142,7 +131,6 @@ SPEC REPOS:
     - PromisesSwift
 
 SPEC CHECKSUMS:
-  Firebase: cf09623f98ae25a3ad484e23c7e0e5f464152d80
   FirebaseAnalytics: fd35d51e6da86ef1aa2c3fe1f64ab2482cc01ba5
   FirebaseCore: c43f9f0437b50a965e930cac4ad243200d12a984
   FirebaseCoreExtension: cb88851781a24e031d1b58e0bd01eb1f46b044b5
@@ -158,6 +146,6 @@ SPEC CHECKSUMS:
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
 
-PODFILE CHECKSUM: 64676ccdbea67b83b007218255fe6b982a3869f3
+PODFILE CHECKSUM: 35d1d8f61f1b5a06ace6a66e02733ebc9e1d5efb
 
 COCOAPODS: 1.15.2

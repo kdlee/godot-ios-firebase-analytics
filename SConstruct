@@ -156,6 +156,7 @@ env.Append(CPPPATH=[
     '.',
     'godot',
     'Pods/FirebaseCore/FirebaseCore/Sources/Public',
+    'Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.xcframework/ios-arm64/FirebaseAnalytics.framework/Headers',
     'Pods/Headers/Public',
 ])
 

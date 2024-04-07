@@ -16,6 +16,7 @@
 #include "core/object.h"
 #endif
 
+
 class FirebaseAnalytics : public Object {
     GDCLASS(FirebaseAnalytics, Object);
 
@@ -24,6 +25,7 @@ class FirebaseAnalytics : public Object {
 public:
 
     void configure();
+    void log_event(String event, Dictionary params);
 
     FirebaseAnalytics();
     ~FirebaseAnalytics();
