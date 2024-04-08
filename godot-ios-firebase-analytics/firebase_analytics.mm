@@ -53,11 +53,11 @@
             }
             else {
                 d["success"] = true;
-                d["providerID"] = user.providerID;
-                d["email"] = user.email;
+                d["providerID"] = [user.providerID UTF8String];
+                d["email"] = [user.email UTF8String];
                 d["uid"] = user.uid;
-                d["displayName"] = user.displayName;
-                d["id_token"] = idToken;
+                d["displayName"] = [user.displayName UTF8String];
+                d["id_token"] = [idToken UTF8String];
             }
             FirebaseAnalytics::get_singleton()->emit_signal("on_sign_in", d);
         }];
