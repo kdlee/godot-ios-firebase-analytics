@@ -60,12 +60,12 @@ env.Append(CCFLAGS=["-fmodules", "-fcxx-modules"])
 
 if env['simulator']:
     sdk_name = 'iphonesimulator'
-    env.Append(CCFLAGS=['-mios-simulator-version-min=10.0'])
-    env.Append(LINKFLAGS=["-mios-simulator-version-min=10.0"])
+    env.Append(CCFLAGS=['-mios-simulator-version-min=14.0'])
+    env.Append(LINKFLAGS=["-mios-simulator-version-min=14.0"])
 else:
     sdk_name = 'iphoneos'
-    env.Append(CCFLAGS=['-miphoneos-version-min=10.0'])
-    env.Append(LINKFLAGS=["-miphoneos-version-min=10.0"])
+    env.Append(CCFLAGS=['-miphoneos-version-min=14.0'])
+    env.Append(LINKFLAGS=["-miphoneos-version-min=14.0"])
 
 try:
     sdk_path = decode_utf8(subprocess.check_output(['xcrun', '--sdk', sdk_name, '--show-sdk-path']).strip())
@@ -157,6 +157,10 @@ env.Append(CPPPATH=[
     'godot',
     'Pods/FirebaseCore/FirebaseCore/Sources/Public',
     'Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.xcframework/ios-arm64/FirebaseAnalytics.framework/Headers',
+    'Pods/FirebaseGoogleAuthUI/FirebaseGoogleAuthUI/Sources/Public',
+    'Pods/FirebaseAuth/FirebaseAuth/Sources/Public',
+    'Pods/FirebaseAuthUI/FirebaseAuthUI/Sources/Public',
+    'Pods/FirebaseOAuthUI/FirebaseOAuthUI/Sources/Public',
     'Pods/Headers/Public',
 ])
 

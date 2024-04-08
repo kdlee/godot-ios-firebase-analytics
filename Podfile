@@ -15,8 +15,11 @@ target 'godot-ios-firebase-analytics' do
   # Add the pods for any other Firebase products you want to use in your app
   # For example, to use Firebase Authentication and Cloud Firestore
   pod 'FirebaseCrashlytics'
-  #pod 'FirebaseAuth'
-  #pod 'FirebaseUI'
+  pod 'FirebaseAuth'
+  pod 'FirebaseUI/Auth'
+  pod 'FirebaseUI/Google'
+  pod 'FirebaseUI/OAuth'
+  pod 'GoogleSignIn'
   #pod 'Firebase/Firestore'
 
 end
@@ -24,7 +27,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
     end
   end
 end

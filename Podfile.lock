@@ -1,4 +1,10 @@
 PODS:
+  - AppAuth (1.7.3):
+    - AppAuth/Core (= 1.7.3)
+    - AppAuth/ExternalUserAgent (= 1.7.3)
+  - AppAuth/Core (1.7.3)
+  - AppAuth/ExternalUserAgent (1.7.3):
+    - AppAuth/Core
   - FirebaseAnalytics (10.23.1):
     - FirebaseAnalytics/AdIdSupport (= 10.23.1)
     - FirebaseCore (~> 10.0)
@@ -17,6 +23,17 @@ PODS:
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30911.0, >= 2.30908.0)
+  - FirebaseAppCheckInterop (10.23.0)
+  - FirebaseAuth (10.23.0):
+    - FirebaseAppCheckInterop (~> 10.17)
+    - FirebaseCore (~> 10.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
+    - GoogleUtilities/Environment (~> 7.8)
+    - GTMSessionFetcher/Core (< 4.0, >= 2.1)
+    - RecaptchaInterop (~> 100.0)
+  - FirebaseAuthUI (13.1.0):
+    - FirebaseAuth (< 11.0, >= 8.0)
+    - FirebaseCore
   - FirebaseCore (10.23.1):
     - FirebaseCoreInternal (~> 10.0)
     - GoogleUtilities/Environment (~> 7.12)
@@ -34,11 +51,19 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - nanopb (< 2.30911.0, >= 2.30908.0)
     - PromisesObjC (~> 2.1)
+  - FirebaseGoogleAuthUI (13.1.0):
+    - FirebaseAuth
+    - FirebaseAuthUI
+    - FirebaseCore
+    - GoogleSignIn (~> 6.0)
   - FirebaseInstallations (10.23.0):
     - FirebaseCore (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
+  - FirebaseOAuthUI (13.1.0):
+    - FirebaseAuth (< 11.0, >= 8.0)
+    - FirebaseAuthUI (< 14.0, >= 12.0.2)
   - FirebaseRemoteConfigInterop (10.23.0)
   - FirebaseSessions (10.23.0):
     - FirebaseCore (~> 10.5)
@@ -48,6 +73,12 @@ PODS:
     - GoogleUtilities/Environment (~> 7.10)
     - nanopb (< 2.30911.0, >= 2.30908.0)
     - PromisesSwift (~> 2.1)
+  - FirebaseUI/Auth (13.1.0):
+    - FirebaseAuthUI (~> 13.0)
+  - FirebaseUI/Google (13.1.0):
+    - FirebaseGoogleAuthUI (~> 13.0)
+  - FirebaseUI/OAuth (13.1.0):
+    - FirebaseOAuthUI (~> 13.0)
   - GoogleAppMeasurement (10.23.1):
     - GoogleAppMeasurement/AdIdSupport (= 10.23.1)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
@@ -72,6 +103,10 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30911.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleSignIn (6.2.4):
+    - AppAuth (~> 1.5)
+    - GTMAppAuth (~> 1.3)
+    - GTMSessionFetcher/Core (< 3.0, >= 1.1)
   - GoogleUtilities/AppDelegateSwizzler (7.13.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -100,6 +135,10 @@ PODS:
   - GoogleUtilities/UserDefaults (7.13.0):
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
+  - GTMAppAuth (1.3.1):
+    - AppAuth/Core (~> 1.6)
+    - GTMSessionFetcher/Core (< 3.0, >= 1.5)
+  - GTMSessionFetcher/Core (2.3.0)
   - nanopb (2.30910.0):
     - nanopb/decode (= 2.30910.0)
     - nanopb/encode (= 2.30910.0)
@@ -108,44 +147,72 @@ PODS:
   - PromisesObjC (2.4.0)
   - PromisesSwift (2.4.0):
     - PromisesObjC (= 2.4.0)
+  - RecaptchaInterop (100.0.0)
 
 DEPENDENCIES:
   - FirebaseAnalytics
+  - FirebaseAuth
   - FirebaseCrashlytics
+  - FirebaseUI/Auth
+  - FirebaseUI/Google
+  - FirebaseUI/OAuth
+  - GoogleSignIn
 
 SPEC REPOS:
   trunk:
+    - AppAuth
     - FirebaseAnalytics
+    - FirebaseAppCheckInterop
+    - FirebaseAuth
+    - FirebaseAuthUI
     - FirebaseCore
     - FirebaseCoreExtension
     - FirebaseCoreInternal
     - FirebaseCrashlytics
+    - FirebaseGoogleAuthUI
     - FirebaseInstallations
+    - FirebaseOAuthUI
     - FirebaseRemoteConfigInterop
     - FirebaseSessions
+    - FirebaseUI
     - GoogleAppMeasurement
     - GoogleDataTransport
+    - GoogleSignIn
     - GoogleUtilities
+    - GTMAppAuth
+    - GTMSessionFetcher
     - nanopb
     - PromisesObjC
     - PromisesSwift
+    - RecaptchaInterop
 
 SPEC CHECKSUMS:
+  AppAuth: a13994980c1ec792f7e2e665acd4d4aa6be43240
   FirebaseAnalytics: fd35d51e6da86ef1aa2c3fe1f64ab2482cc01ba5
+  FirebaseAppCheckInterop: a1955ce8c30f38f87e7d091630e871e91154d65d
+  FirebaseAuth: 22eb85d3853141de7062bfabc131aa7d6335cade
+  FirebaseAuthUI: 9b4de780078d674019a2bfc560bb812f23b45ff1
   FirebaseCore: c43f9f0437b50a965e930cac4ad243200d12a984
   FirebaseCoreExtension: cb88851781a24e031d1b58e0bd01eb1f46b044b5
   FirebaseCoreInternal: 6a292e6f0bece1243a737e81556e56e5e19282e3
   FirebaseCrashlytics: b7aca2d52dd2440257a13741d2909ad80745ac6c
+  FirebaseGoogleAuthUI: 420e5b1c10f13a47c18579303d93275842f1a8a0
   FirebaseInstallations: 42d6ead4605d6eafb3b6683674e80e18eb6f2c35
+  FirebaseOAuthUI: 5f19522e97d992841163d89a0b44afe315674020
   FirebaseRemoteConfigInterop: cbc87ffa4932719a7911a08e94510f18f026f5a7
   FirebaseSessions: f06853e30f99fe42aa511014d7ee6c8c319f08a3
+  FirebaseUI: d3e0d3f81f5c464554945195a6133a3ab905b6a7
   GoogleAppMeasurement: 794d1d2f71fdf77a077a3986258a5c2dac0f9d48
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
+  GoogleSignIn: 5651ce3a61e56ca864160e79b484cd9ed3f49b7a
   GoogleUtilities: d053d902a8edaa9904e1bd00c37535385b8ed152
+  GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
+  GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
+  RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: 35d1d8f61f1b5a06ace6a66e02733ebc9e1d5efb
+PODFILE CHECKSUM: b445d1f3c00e7a371e74608fa765458e2721c94f
 
 COCOAPODS: 1.15.2
